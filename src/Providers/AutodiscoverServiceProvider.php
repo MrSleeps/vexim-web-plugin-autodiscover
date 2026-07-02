@@ -30,9 +30,10 @@ class AutodiscoverServiceProvider extends ServiceProvider
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
         
-        if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
-        }        
+        $viewsPath = __DIR__.'/../resources/views';
+        if (file_exists($viewsPath)) {
+            $this->loadViewsFrom($viewsPath, 'autodiscover');
+        } 
     
     }
 
