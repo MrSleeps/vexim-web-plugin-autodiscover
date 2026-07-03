@@ -34,7 +34,7 @@ class AutodiscoverController extends Controller
             $domain = $request->getHost();
         }
 
-        return response()->view('autodiscover', [
+        return response()->view('autodiscover::autodiscover', [
             'email' => $email,
             'imapServer' => $imapServer,
             'smtpServer' => $smtpServer,

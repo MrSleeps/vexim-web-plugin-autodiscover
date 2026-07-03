@@ -5,7 +5,6 @@ namespace VEximweb\Plugin\Autodiscover\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Console\Scheduling\Schedule;
-use VEximweb\Plugin\Autodiscover\Services\PublicSuffixListService;
 
 class AutodiscoverServiceProvider extends ServiceProvider
 {
