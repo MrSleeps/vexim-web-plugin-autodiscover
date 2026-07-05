@@ -1,11 +1,8 @@
 <?php
-
 namespace VEximweb\Plugin\Autodiscover\Providers;
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Console\Scheduling\Schedule;
-
 class AutodiscoverServiceProvider extends ServiceProvider
 {
     /**
@@ -13,29 +10,28 @@ class AutodiscoverServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
         // Bind plugin repositories
         $this->bindRepositories();
         
         // Bind services
         $this->bindServices();
     }
-
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
+        error_log('AUTODISCOVER: boot() called, object hash=' . spl_object_hash($this));
+
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
-        
-        $viewsPath = __DIR__.'/../resources/views';
+
+        $viewsPath = __DIR__.'/../../resources/views';
+
         if (file_exists($viewsPath)) {
             $this->loadViewsFrom($viewsPath, 'autodiscover');
-        } 
-    
+        }
     }
-
     /**
      * Bind all repositories to their interfaces.
      */
@@ -47,11 +43,9 @@ class AutodiscoverServiceProvider extends ServiceProvider
             EmailScoreSampleRepository::class
         );
         */
-
   
         
     }
-
     /**
      * Bind all services to the container.
      */
@@ -61,8 +55,6 @@ class AutodiscoverServiceProvider extends ServiceProvider
             return new PublicSuffixListService();
         });
     }
-
-
     
    
 }
