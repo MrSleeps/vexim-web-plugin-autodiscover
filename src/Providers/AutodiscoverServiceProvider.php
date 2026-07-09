@@ -21,7 +21,6 @@ class AutodiscoverServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        error_log('AUTODISCOVER: boot() called, object hash=' . spl_object_hash($this));
 
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
